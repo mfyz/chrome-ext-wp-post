@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="/assets/bootstrap.min.css" rel="stylesheet">
+	<script src="/assets/jquery-3.4.1.min.js" type="text/javascript"></script>
+	<script src="/assets/popper.min.js" type="text/javascript"></script>
+	<script src="/assets/bootstrap.min.js" type="text/javascript"></script>
+	<script src="/assets/jquery.xmlrpc.min.js" type="text/javascript"></script>
+	
+	<script src="popup.js" type="text/javascript"></script>	
+</head>
+<body style="width: 600px; height: 500px; padding: 20px;">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<div class="mb-4">
+					<h3>Post to Wordpress</h3>
+					<ul class="nav nav-tabs justify-content-end" style="margin-top: -40px;">
+						<li class="nav-item">
+							<a class="nav-link active" href="/popup.html">Post</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/options.html">Settings</a>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="form-group">
+					<label>Image/Video</label>
+					<div id="post_image"></div>
+					<div id="post_media"></div>
+				</div>
+				<div class="form-group">
+					<label for="post_title">Title</label>
+					<input id="post_title" type="text" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="post_content">Content</label>
+					<textarea id="post_content" class="form-control" rows="3"></textarea>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<label for="post_category">Category</label>
+							<select id="post_category" class="custom-select"></select>
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-group">
+							<label for="post_tags">Tags</label>
+							<input id="post_tags" type="text" class="form-control">
+						</div>
+					</div>
+				</div>
+				
+				<div class="mt-4 mb-5" id="post_button">
+					<button class="btn btn-primary btn-lg btn-block" id="btn_save">Publish</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="toast" class="alert alert-warning"
+		style="display: none; 
+			position: absolute; 
+			left: 0; right: 0; top: 0;
+			z-index: 10;
+			margin: 0;
+			padding: 20px;
+			border-radius: 0;
+			text-align: center;"
+	>
+		<div id="toast-msg">
+			This is a toast message.
+		</div>
+	</div>
+</body>
+</html>
