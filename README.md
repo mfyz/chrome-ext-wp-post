@@ -1,4 +1,4 @@
-## Jira UI Tweaks
+## Post to Wordpress Chrome Extension
 
 ### Development
 
