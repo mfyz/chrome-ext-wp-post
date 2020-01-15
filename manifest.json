@@ -4,19 +4,12 @@
   "manifest_version": 2,
   "description": "Post to Wordpress",
   "homepage_url": "http://github.com/mfyz",
-  "permissions": ["storage", "activeTab", "tabs", "http://*/", "http://*/*", "https://*/*"],
+  "permissions": ["storage", "activeTab", "tabs", "*://*/*"],
   "browser_action": {
 	"default_popup": "popup.html",
 	"default_icon": {
 	  "64": "assets/icon_64.png",
 	  "128": "assets/icon_128.png"
 	}
-  },
-  "content_scripts": [
-    {
-	  "js": [ "extract_media.js" ],
-	  "matches": [ "http://*/*", "https://*/*" ],
-	  "run_at": "document_end"
- 	}
-  ]
+  }
 }

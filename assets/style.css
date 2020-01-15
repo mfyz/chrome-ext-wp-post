@@ -1,0 +1,45 @@
+body {
+	font-size: 12px;
+}
+
+body.page-pop-up {
+	width: 600px;
+	height: 500px;
+	padding: 20px;
+}
+
+body.page-options {
+	width: 600px;
+	height: 300px;
+	padding: 20px;
+}
+
+.image-selector-container {
+	overflow-x: scroll;
+	white-space: nowrap;
+}
+
+.image-selector-container img {
+	margin-right: 15px;
+	border: 2px solid #ffffff;
+}
+
+.image-selector-container img.selected {
+	border-color: #0473EF;
+}
+
+#toast {
+	display: none; 
+	position: absolute; 
+	left: 0; right: 0; top: 0;
+	z-index: 10;
+	margin: 0;
+	padding: 20px;
+	border-radius: 0;
+	text-align: center;
+}
+
+.buttons{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}

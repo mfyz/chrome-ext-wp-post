@@ -7,12 +7,9 @@ var password = '';
 var userid = 0;
 var current_url = '';
 
-var success_btn = '<button id="btn_post" class="btn btn-large btn-success"><i class="icon-ok icon-white"></i> Post published !</button>';
-var loading_btn = '<button id="btn_post" class="btn btn-large btn-info disabled"><i class="icon-glass icon-white"></i> Posting...</button>';
-var warning_btn = '<button id="btn_post" class="btn btn-large btn-warning disabled"><i class="icon-fire icon-white"></i> Posting failed !</button>';
-var connect_btn = '<button id="btn_post" class="btn btn-large btn-error disabled"><i class="icon-resize-full icon-white"></i> Connection problem !</button>';
-
-function show_toast(msg) {
+function show_toast(msg, className) {
+	if (!className) className = 'warning';
+	$('#toast').removeClass('alert-warning alert-danger alert-success').addClass('alert-' + className);
 	$('#toast-msg').html(msg);
 	$('#toast').slideDown();
 	setTimeout(function(){ hide_toast() }, 4000);
@@ -33,36 +30,49 @@ $(window).ready(function(){
 			chrome.tabs.executeScript({
 				file: 'extract_media.js'
 			});
-			chrome.tabs.sendMessage(tabs[0].id, {
-				method: "getImages", 
-			}, function(response) {
-				var imagesArr = response.images;
-				current_url = response.current_url;
-				
-				if(imagesArr.length > 0){
-					var image_selector = '';
-					for (i in imagesArr) {
-						
+			setTimeout(function(){
+				chrome.tabs.sendMessage(tabs[0].id, {
+					method: "getImages", 
+				}, function(response) {
+					var imagesArr = response.images;
+					current_url = response.current_url;
+					
+					if(imagesArr.length > 0){
+						var image_selector = '';
+						for (i in imagesArr) {
+							var img = imagesArr[i];
+							image_selector += '<img src="' + img.url + '" height="150">';
+						}
+						$('#post_image').html(image_selector);
+						$('#post_image img').click(function(){
+							$('#post_image img').removeClass('selected');
+							$(this).addClass('selected');
+						});
+						$('#post_image img:first').addClass('selected');
 					}
-					$('#post_image').html(image_selector);
-				}
-				
-				get_categories();
-				
-				$('#btn_post').click(function(){
-					prepare_content();
+					
+					get_categories();
+					
+					$('#btn_post').click(function() {
+						if ($('#btn_post').hasClass('disabled')) return;
+						$('#btn_post').addClass('disabled').html('Publishing...');
+						prepare_content();
+					});
 				});
-			});
+			}, 100)
 		});
 	}
 });
 
-function prepare_content(img, content, media, featimgid) {
-	// Upload selected image
-	//get_uploaded_img_url(selectedimgsrc, content, media, true)
+function resetFormSubmitState(){
+	$('#btn_post').removeClass('disabled').html('Publish');
+}
 
-	content = content.replace('[source]', '<a href="'+current_url+'" target="_blank">source</a>');
-	var post = img+content+media;
+function prepare_content() {
+	var content = $('#post_content').val();
+	content = content.replace('[source]', '<a href="' + current_url + '" target="_blank">source</a>');
+
+	var post = content;
 	var title = $('#post_title').val();
 	var category = parseInt($("#post_category option:selected").val());
 	var tags = $("#post_tags").val().replace(/[`~!@#$%^&*()_|+\-=?;:'".<>\{\}\[\]\\\/]/gi, '');
@@ -72,17 +82,32 @@ function prepare_content(img, content, media, featimgid) {
 	tagtab = $.grep(tagtab, function(n){
 		return (n !== "" && n !== " " && n != null);
 	});
-	
-	post_to_worpress(title, post, category, tagtab, featimgid);
+
+	var selectedimgsrc = $('#post_image img.selected').attr('src');
+	if (selectedimgsrc) {
+		get_uploaded_img_url(selectedimgsrc, function(err, response){
+			if (err) {
+				show_toast('Image upload failed!', 'danger')
+				resetFormSubmitState();
+				return;
+			}
+			// post = '<p><img src="' + response.url + '" /></p>' + post;
+			post_to_worpress(title, post, category, tagtab, response.id);
+		})
+	}
+	else {
+		// post without image
+		post_to_worpress(title, post, category, tagtab);
+	}
 }
 
-function get_uploaded_img_url(file, content, media, insertimg){
+function get_uploaded_img_url(file, cb){
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", file, true);
 	xhr.responseType = 'arraybuffer';
 
-	var filename = $.url('file',file);
-	var fileext = $.url('fileext',file);
+	var filename = $.url('file', file);
+	var fileext = $.url('fileext', file);
 	var mime = "image/jpeg";
 	if (fileext == 'png') mime = "image/png";
 	else if (fileext == 'gif') mime = "image/gif";
@@ -93,22 +118,17 @@ function get_uploaded_img_url(file, content, media, insertimg){
 			url: 'https://cors-anywhere.herokuapp.com/' + url + '/xmlrpc.php',
 			dataType: 'xml',
 			methodName: 'wp.uploadFile',
-			params: [1, login, password,
-				{name: filename,
-					type: mime,					
-					bits: e.currentTarget.response,
-					overwrite: true
-				}
-			],
+			params: [1, login, password, {
+				name: filename,
+				type: mime,					
+				bits: e.currentTarget.response,
+				overwrite: true
+			}],
 			success: function(response){
-				var img = '';
-				if (insertimg == true) {img = '<p><img src="' + response[0].url + '" width="'+width+'" /></p>';}
-				// ready to submit
-				// postek(img, content, media, response[0].id);
+				cb(false, response[0]);
 			},
 			error: function(err, status, thrown){
-				console.log(err);
-				console.log(status);
+				cb(err, null);
 			}
 		});	
 	};
@@ -135,29 +155,24 @@ function post_to_worpress(title, post, selcategory, tagtab, featimgid){
 		success: function(response){
 			var xml = $($.parseXML(response));
 			var post_id = xml.find('post_id');
-			
+			resetFormSubmitState();
 			if(post_id){
-				$('#post_button').html(success_btn);
+				show_toast('Successfully Published!', 'success');
 			}
-			else{
-				$('#post_button').html(warning_btn);
-			}
-			window.setInterval( function(){window.close();}, 2000);
+			setTimeout( function(){ window.close(); }, 2000);
 		},
 		error: function(err, status, thrown){
+			resetFormSubmitState();
 			switch(status){
-				case 'timeout':
-				$('#post_button').html(connect_btn);
+			case 'timeout':
+				show_toast('Timeout!');
 				break;
-				
-				case 'error':
-				$('#post_button').html(warning_btn);
+			case 'error':
+			default:
+				show_toast('Publish Failed!', 'danger');
 				break;
-				
-				default:
-				$('#post_button').html(warning_btn);
 			}
-			window.setInterval( function(){window.close();}, 2000);
+			setTimeout( function(){ window.close(); }, 2000);
 		}
 	});
 }

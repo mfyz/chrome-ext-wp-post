@@ -10,9 +10,10 @@
 	<script src="/assets/jquery.xmlrpc.min.js" type="text/javascript"></script>
 	<link rel="shortcut icon" href="/assets/icon_64.png">
 	
+	<link href="/assets/style.css" rel="stylesheet">
 	<script type="text/javascript" src="options.js"></script>
 </head>
-<body style="width: 600px; height: 350px; padding: 20px;">
+<body class="page-options">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col">
@@ -30,7 +31,7 @@
 
 				<div class="form-group">
 					<label for="input_url">Wordpress Blog Url</label>
-					<input type="text" id="input_url" placeholder="Wordpress Blog Url" class="form-control input-block">
+					<input type="text" id="input_url" placeholder="Wordpress Blog Url" class="form-control form-control-sm">
 					<small class="form-text text-muted">
 						i.e: http://awesome-wordpress-blog.com
 					</small>
@@ -39,19 +40,19 @@
 					<div class="col">
 						<div class="form-group">
 							<label for="input_login">Wordpress Username or Email</label>
-							<input type="text" size="35" id="input_login" placeholder="Username or Email address" class="form-control">
+							<input type="text" size="35" id="input_login" placeholder="Username or Email address" class="form-control form-control-sm">
 						</div>
 					</div>
 					<div class="col">
 						<div class="form-group">
 							<label for="input_password">Wordpress Password</label>
-							<input type="password" size="35" id="input_password" placeholder="Password" class="form-control">
+							<input type="password" size="35" id="input_password" placeholder="Password" class="form-control form-control-sm">
 						</div>
 					</div>
 				</div>
 
-				<div class="mt-4 mb-5">
-					<button class="btn btn-primary btn-lg btn-block" id="btn_save">Save Changes</button>
+				<div class="buttons">
+					<button class="btn btn-primary btn-block" id="btn_save">Save Changes</button>
 				</div>
 			</div>
 		</div>
