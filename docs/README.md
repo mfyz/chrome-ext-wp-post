@@ -4,9 +4,7 @@ Post to your wordpress blog with easily importing images from any web page in fe
 
 You can download this extension in:
 
-<a href="#"><img src="chrome-webstore.png"></a>
-
-[![chrome-webstore.png](chrome-webstore.png)](https://chrome.google.com/webstore/detail/ahafakenhihgocjlhlekkbnchkjonkhl?hl=en)
+<a href="https://chrome.google.com/webstore/detail/ahafakenhihgocjlhlekkbnchkjonkhl?hl=en" target="_blank"><img src="chrome-webstore.png"></a>
 
 ### Usage:
 
