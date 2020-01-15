@@ -18,6 +18,12 @@ Using Wordpress XML-RPC API, simply connect your wordpress blog first, then clic
 
 For any issues or feedback, feel free to reach to our support from github issues.
 
+## Screenshots
+
+[Screenshot1.jpg](Screenshot1.jpg)
+
+[Screenshot2.jpg](Screenshot2.jpg)
+
 ### Open Source / Contributing
 
 This extension is open source. You're welcome to contribute at [Github Project Page](http://github.com/mfyz/chrome-ext-wp-post)
