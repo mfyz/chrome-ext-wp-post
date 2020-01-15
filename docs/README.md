@@ -1,6 +1,10 @@
-## Post to Wordpress Chrome Extension
-
 Post to your wordpress blog with easily importing images from any web page in few clicks. With "Post to Wordpress" extension, enjoy creating posts quickly right from your browser with rich import features help you to import content from the page you are browsing...
+
+### Download
+
+You can download this extension in:
+
+[[[/chrome-webstore.ong]]](https://chrome.google.com/webstore/detail/ahafakenhihgocjlhlekkbnchkjonkhl?hl=en)
 
 ### Usage:
 
