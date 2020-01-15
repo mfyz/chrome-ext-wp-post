@@ -2,14 +2,25 @@
   "name": "Post to Wordpress",
   "version": "0.0.1",
   "manifest_version": 2,
+  "author": "Mehmet Fatih Yildiz",
   "description": "Post to your wordpress blog with easily importing images and content from any web page in few clicks.",
-  "homepage_url": "http://github.com/mfyz/chrome-ext-wp-post",
+  "homepage_url": "https://mfyz.github.io/chrome-ext-wp-post/",
   "permissions": ["storage", "activeTab", "tabs", "*://*/*"],
   "browser_action": {
 	"default_popup": "popup.html",
 	"default_icon": {
-	  "64": "assets/icon_64.png",
-	  "128": "assets/icon_128.png"
+	  "16": "assets/Icon16.png",
+	  "32": "assets/Icon32.png",
+	  "48": "assets/Icon48.png",
+	  "64": "assets/Icon64.png",
+	  "128": "assets/Icon128.png"
 	}
+  },
+  "icons": {
+	"16": "assets/Icon16.png",
+	"32": "assets/Icon32.png",
+	"48": "assets/Icon48.png",
+	"64": "assets/Icon64.png",
+	"128": "assets/Icon128.png"
   }
 }
