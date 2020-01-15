@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "manifest_version": 2,
   "description": "Post to your wordpress blog with easily importing images and content from any web page in few clicks.",
-  "homepage_url": "http://github.com/mfyz",
+  "homepage_url": "http://github.com/mfyz/chrome-ext-wp-post",
   "permissions": ["storage", "activeTab", "tabs", "*://*/*"],
   "browser_action": {
 	"default_popup": "popup.html",

@@ -14,15 +14,9 @@ Using Wordpress XML-RPC API, simply connect your wordpress blog first, then clic
 
 For any issues or feedback, feel free to reach to our support from github issues.
 
-### Development
+### Open Source / Contributing
 
-1. Open Extensions page from Window > Extensions menu. Or navigate to ```chrome://extensions.```
-2. Enable Developer Mode by clicking the toggle switch next to Developer mode.
-3. Click the LOAD UNPACKED button and select the extension directory.
-
-## Alternatives / Similar
-- ExpressCurate http://bit.ly/30ngZ4j
-- WordXPress http://bit.ly/35XM3sd
+This extension is open source. You're welcome to contribute at http://github.com/mfyz/chrome-ext-wp-post
 
 ## Support
 
