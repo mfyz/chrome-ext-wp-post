@@ -20,8 +20,8 @@ For any issues or feedback, feel free to reach to our support from github issues
 
 ### Open Source / Contributing
 
-This extension is open source. You're welcome to contribute at http://github.com/mfyz/chrome-ext-wp-post
+This extension is open source. You're welcome to contribute at [Github Project Page](http://github.com/mfyz/chrome-ext-wp-post)
 
 ## Support
 
-Open a github "issue" if you need any help or have feedback or suggestions: http://github.com/mfyz/chrome-ext-wp-post/issues
+Open a github "issue" if you need any help or have feedback or suggestions at [Github Issues Page](http://github.com/mfyz/chrome-ext-wp-post/issues)
