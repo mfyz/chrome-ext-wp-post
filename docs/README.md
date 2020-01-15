@@ -20,9 +20,9 @@ For any issues or feedback, feel free to reach to our support from github issues
 
 ## Screenshots
 
-[Screenshot1.jpg](Screenshot1.jpg)
+![Screenshot1.jpg](Screenshot1.jpg)
 
-[Screenshot2.jpg](Screenshot2.jpg)
+![Screenshot2.jpg](Screenshot2.jpg)
 
 ### Open Source / Contributing
 
