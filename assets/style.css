@@ -4,7 +4,7 @@ body {
 
 body.page-pop-up {
 	width: 600px;
-	height: 500px;
+	min-height: 300px;
 	padding: 20px;
 }
 

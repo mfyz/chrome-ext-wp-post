@@ -2,7 +2,7 @@
   "name": "Post to Wordpress",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "Post to Wordpress",
+  "description": "Post to your wordpress blog with easily importing images and content from any web page in few clicks.",
   "homepage_url": "http://github.com/mfyz",
   "permissions": ["storage", "activeTab", "tabs", "*://*/*"],
   "browser_action": {
