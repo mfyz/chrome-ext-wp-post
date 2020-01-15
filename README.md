@@ -6,7 +6,7 @@
 2. Enable Developer Mode by clicking the toggle switch next to Developer mode.
 3. Click the LOAD UNPACKED button and select the extension directory.
 
-## Competitors / Alternatives
+## Alternatives
 - ExpressCurate http://bit.ly/30ngZ4j
 - WordXPress http://bit.ly/35XM3sd
 
