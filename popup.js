@@ -54,9 +54,17 @@ $(window).ready(function(){
 					get_categories();
 					
 					$('#btn_post').click(function() {
-						if ($('#btn_post').hasClass('disabled')) return;
-						$('#btn_post').addClass('disabled').html('Publishing...');
+						if ($('#buttons').hasClass('disabled')) return;
+						$('#buttons').addClass('disabled');
+						$('#btn_post').html('Publishing...');
 						prepare_content();
+					});
+					
+					$('#btn_draft').click(function() {
+						if ($('#buttons').hasClass('disabled')) return;
+						$('#buttons').addClass('disabled');
+						$('#btn_draft').html('Saving...');
+						prepare_content(true);
 					});
 				});
 			}, 100)
@@ -65,10 +73,12 @@ $(window).ready(function(){
 });
 
 function resetFormSubmitState(){
-	$('#btn_post').removeClass('disabled').html('Publish');
+	$('#buttons').removeClass('disabled');
+	$('#btn_publish').html('Publish');
+	$('#btn_draft').html('Save Draft');
 }
 
-function prepare_content() {
+function prepare_content(asDraft) {
 	var content = $('#post_content').val();
 	content = content.replace('[source]', '<a href="' + current_url + '" target="_blank">source</a>');
 
@@ -83,6 +93,13 @@ function prepare_content() {
 		return (n !== "" && n !== " " && n != null);
 	});
 
+	// validations
+	if (title.length < 1) {
+		show_toast("Title can't be empty");
+		resetFormSubmitState();
+		return;
+	}
+
 	var selectedimgsrc = $('#post_image img.selected').attr('src');
 	if (selectedimgsrc) {
 		get_uploaded_img_url(selectedimgsrc, function(err, response){
@@ -92,12 +109,12 @@ function prepare_content() {
 				return;
 			}
 			// post = '<p><img src="' + response.url + '" /></p>' + post;
-			post_to_worpress(title, post, category, tagtab, response.id);
+			post_to_worpress(title, post, category, tagtab, response.id, asDraft);
 		})
 	}
 	else {
 		// post without image
-		post_to_worpress(title, post, category, tagtab);
+		post_to_worpress(title, post, category, tagtab, null, asDraft);
 	}
 }
 
@@ -135,14 +152,14 @@ function get_uploaded_img_url(file, cb){
 	xhr.send();
 }
 
-function post_to_worpress(title, post, selcategory, tagtab, featimgid){
+function post_to_worpress(title, post, selcategory, tagtab, featimgid, statusIsDraft){
 	$.xmlrpc({
 		url: 'https://cors-anywhere.herokuapp.com/' + url + '/xmlrpc.php',
 		methodName: 'wp.newPost',
 		params: [1, login, password, 
 			{
 				post_type: 'post', 
-				post_status: 'publish', 
+				post_status: (statusIsDraft ? 'draft' : 'publish'), 
 				post_author: userid, 
 				post_title: title, 
 				post_content: post,
@@ -157,7 +174,7 @@ function post_to_worpress(title, post, selcategory, tagtab, featimgid){
 			var post_id = xml.find('post_id');
 			resetFormSubmitState();
 			if(post_id){
-				show_toast('Successfully Published!', 'success');
+				show_toast('Successfully Posted!', 'success');
 			}
 			setTimeout( function(){ window.close(); }, 2000);
 		},
@@ -169,10 +186,9 @@ function post_to_worpress(title, post, selcategory, tagtab, featimgid){
 				break;
 			case 'error':
 			default:
-				show_toast('Publish Failed!', 'danger');
+				show_toast('Posting Failed!', 'danger');
 				break;
 			}
-			setTimeout( function(){ window.close(); }, 2000);
 		}
 	});
 }

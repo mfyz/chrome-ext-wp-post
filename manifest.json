@@ -1,6 +1,6 @@
 {
   "name": "Post to Wordpress",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifest_version": 2,
   "author": "Mehmet Fatih Yildiz",
   "description": "Post to your wordpress blog with easily importing images and content from any web page in few clicks.",
