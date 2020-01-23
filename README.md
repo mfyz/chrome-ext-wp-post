@@ -26,6 +26,10 @@ For any issues or feedback, feel free to reach to our support from github issues
 - ExpressCurate http://bit.ly/30ngZ4j
 - WordXPress http://bit.ly/35XM3sd
 
+# License
+
+This is an open source software licensed with MIT License. See the full [license file](LICENSE.md) or read a [summary explanation here](https://tldrlegal.com/license/mit-license).
+
 ## Support
 
 Open a github "issue" if you need any help or have feedback or suggestions: http://github.com/mfyz/chrome-ext-wp-post/issues
