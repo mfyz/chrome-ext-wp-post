@@ -1,5 +1,7 @@
 ## Post to Wordpress Chrome Extension
 
+Project Homepage: https://mfyz.github.io/chrome-ext-wp-post/
+
 Post to your wordpress blog with easily importing images from any web page in few clicks. With "Post to Wordpress" extension, enjoy creating posts quickly right from your browser with rich import features help you to import content from the page you are browsing...
 
 ### Usage:
@@ -23,6 +25,10 @@ For any issues or feedback, feel free to reach to our support from github issues
 ## Alternatives / Similar
 - ExpressCurate http://bit.ly/30ngZ4j
 - WordXPress http://bit.ly/35XM3sd
+
+## License [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)](https://tldrlegal.com/license/mit-license)
+
+This is an open source software licensed with MIT License. See the full [license file](LICENSE.md) or read a [summary explanation here](https://tldrlegal.com/license/mit-license).
 
 ## Support
 
