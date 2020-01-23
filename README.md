@@ -26,7 +26,7 @@ For any issues or feedback, feel free to reach to our support from github issues
 - ExpressCurate http://bit.ly/30ngZ4j
 - WordXPress http://bit.ly/35XM3sd
 
-# License [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)](https://tldrlegal.com/license/mit-license)
+## License [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)](https://tldrlegal.com/license/mit-license)
 
 This is an open source software licensed with MIT License. See the full [license file](LICENSE.md) or read a [summary explanation here](https://tldrlegal.com/license/mit-license).
 
