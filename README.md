@@ -1,6 +1,6 @@
 ## Post to Wordpress Chrome Extension
 
-Project Homepage: https://mfyz.github.io/chrome-ext-wp-post/
+Project Homepage: https://mfyz.github.io/chrome-ext-wp-post-website/
 
 Post to your wordpress blog with easily importing images from any web page in few clicks. With "Post to Wordpress" extension, enjoy creating posts quickly right from your browser with rich import features help you to import content from the page you are browsing...
 
