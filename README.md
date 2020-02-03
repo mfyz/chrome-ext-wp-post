@@ -31,9 +31,9 @@ For any issues or feedback, feel free to reach to our support from github issues
 
 Things missing that I'm planning to slowly add in the future:
 
--   [] Gif, webp, webm support (wordpress XMLRPC rejects these formats)
--   [] Embed in post body instead upload the selected media
--   [] Multiple site configuration/selection
+-   [ ] Gif, webp, webm support (wordpress XMLRPC rejects these formats)
+-   [ ] Embed in post body instead upload the selected media
+-   [ ] Multiple site configuration/selection
 
 ## License [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)](https://tldrlegal.com/license/mit-license)
 
