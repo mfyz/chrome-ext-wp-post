@@ -109,12 +109,12 @@ function prepare_content(asDraft) {
 				return;
 			}
 			// post = '<p><img src="' + response.url + '" /></p>' + post;
-			post_to_worpress(title, post, category, tagtab, response.id, asDraft);
+			post_to_wordpress(title, post, category, tagtab, response.id, asDraft);
 		})
 	}
 	else {
 		// post without image
-		post_to_worpress(title, post, category, tagtab, null, asDraft);
+		post_to_wordpress(title, post, category, tagtab, null, asDraft);
 	}
 }
 
@@ -152,7 +152,7 @@ function get_uploaded_img_url(file, cb){
 	xhr.send();
 }
 
-function post_to_worpress(title, post, selcategory, tagtab, featimgid, statusIsDraft){
+function post_to_wordpress(title, post, selcategory, tagtab, featimgid, statusIsDraft){
 	$.xmlrpc({
 		url: 'https://cors-anywhere.herokuapp.com/' + url + '/xmlrpc.php',
 		methodName: 'wp.newPost',
